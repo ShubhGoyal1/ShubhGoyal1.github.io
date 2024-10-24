@@ -1,0 +1,485 @@
+:root {
+    /* Default Colors (Dark Mode) */
+    --primary-bg: #0d1117; /* Dark navy with a subtle hint of blue */
+    --primary-text: #c9d1d9; /* Soft white-grey for a pleasant reading experience */
+    --accent-color: #58a6ff; /* Vibrant sky blue for accents */
+    --link-color: #79c0ff; /* Light blue with a bit of vibrancy for links */
+    --link-bg: #161b22; /* Darker blue-grey for link background */
+    --link-hover-bg: #21262d; /* Slightly lighter on hover for a subtle effect */
+    --border-color: #30363d; /* Muted grey-blue for borders */
+    --project-bg: #161b22; /* Dark blue-grey to keep sections cohesive */
+    --highlight-color: #f4a261; /* Warm amber to add energy to highlights */
+    --button-bg: #0070C9; /* Rich green for button backgrounds */
+    --button-hover-bg: #005bb5; /* Brighter green on hover for a lively effect */
+}
+
+/* Light Mode Variables */
+body.light-mode {
+    --primary-bg: #f8f9fa; /* Soft, neutral light background */
+    --primary-text: #1a1a1a; /* Dark text for readability */
+    --accent-color: #0070C9; /* Bright blue accent for consistency */
+    --link-color: #0070C9; /* Same blue for links to maintain theme */
+    --link-bg: #ffffff; /* White background for links */
+    --link-hover-bg: #e0e0e0; /* Light grey on hover for subtle interaction */
+    --border-color: #d1d5da; /* Softer grey for borders */
+    --project-bg: #ffffff; /* White background for project sections */
+    --highlight-color: #f4a261; /* Warm amber highlight shared with dark mode */
+    --button-bg: #0070C9; /* Blue button background for continuity */
+    --button-hover-bg: #005bb5; /* Slightly darker blue on hover */
+}
+
+/* General Body Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    margin: 0;
+    padding: 0;
+}
+
+/* Taskbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    flex-wrap: wrap;
+}
+
+.portfolio-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Menu Toggle */
+.menu-toggle {
+    display: none;
+    font-size: 36px;
+    cursor: pointer;
+    color: var(--accent-color);
+    padding: 10px;
+    background-color: var(--primary-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--link-color);
+    background-color: var(--link-bg);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    background-color: var(--link-hover-bg);
+}
+
+/* Dark Mode Toggle */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--button-bg);
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--primary-text);
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--button-hover-bg);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.sun-icon {
+    position: absolute;
+    top: 6.5px;
+    left: 7px;
+    font-size: 14px;
+    transition: opacity 0.4s;
+    opacity: 1;
+}
+
+.moon-icon {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 14px;
+    transition: opacity 0.4s;
+    opacity: 0;
+}
+
+input:checked + .slider .sun-icon {
+    opacity: 0;
+}
+
+input:checked + .slider .moon-icon {
+    opacity: 1;
+}
+
+/* Intro Section */
+.intro {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.intro h1 {
+    font-size: 36px;
+    color: var(--accent-color);
+}
+
+/* Intro Content */
+.intro-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.intro-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 30px;
+    border: 5px solid var(--accent-color);
+    object-fit: cover;
+    object-position: center;
+}
+
+.intro-text {
+    max-width: 600px;
+    background-color: var(--link-hover-bg);
+    padding: 20px;
+    border-left: 5px solid var(--accent-color);
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--primary-text);
+}
+
+.intro-text {
+    text-align: left; 
+    margin-left: 15px;
+    line-height: 1.6; 
+}
+
+/* Featured Projects */
+.projects {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    background-color: var(--link-hover-bg);
+    padding: 50px 0;
+    width: calc(100vw - 17px);
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.projects h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: var(--accent-color);
+    letter-spacing: 1.5px;
+}
+
+.projects h3 {
+    color: var(--accent-color);
+}
+
+.projects u {
+    color: var(--highlight-color);
+}
+
+.project-item {
+    background-color: var(--project-bg);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    color: var(--primary-text);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(50px);
+    will-change: opacity, transform;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateZ(0);
+    display: inline-block;
+    width: 28%;
+    vertical-align: top;
+}
+
+.project-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.project-item a {
+    display: block;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.project-item iframe {
+    margin-top: 20px;
+    width: 100%;
+    height: 280px;
+}
+
+/* Placeholder for Projects */
+.project-placeholder {
+    margin-top: 20px;
+    background-color: var(--link-hover-bg);
+    padding: 20px;
+    border-radius: 10px;
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* Magic Card Trick */
+.magic-game-container {
+    margin-top: 20px;
+}
+
+.magic-game-container button {
+    background-color: var(--button-bg);
+    color: var(--primary-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.magic-game-container button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.instructions {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.column {
+    width: 30%;
+    min-width: 150px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    background-color: var(--link-hover-bg);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.column-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card {
+    padding: 5px 0;
+}
+
+/* Contact Section */
+.contact {
+    background-color: var(--primary-bg);
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.contact ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 1200px) {
+    .project-item {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Project Items */
+    .project-item {
+        width: 100%; /* Full width */
+        margin: 0 0 20px 0; /* Add spacing below each item */
+        text-align: center; /* Center-align text */
+        padding-left: 15px; /* Add left padding */
+        padding-right: 15px; /* Optional: Keep symmetrical padding */
+        box-sizing: border-box;
+        position: relative; /* Ensure it doesn't interfere with scroll */
+    }
+
+    /* Projects Section */
+    .projects {
+        text-align: center;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        width: 100%;
+        overflow: visible;
+        height: auto;
+    }
+
+    /* Navbar Adjustments */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding-left: 15px; /* Add left padding to navbar */
+        padding-right: 15px; /* Optional: Ensure consistent right padding */
+    }
+
+    /* Show the Menu Toggle Button */
+    .menu-toggle {
+        display: none;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Show Nav-Links When Active */
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* Navbar Links */
+    .nav-links a {
+        width: 100%;
+        text-align: left; /* Align text to the left */
+        padding: 10px 15px; /* Add padding inside each link */
+        background-color: var(--link-bg);
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    /* Font Size and Padding Adjustments for Mobile */
+    .nav-links a {
+        font-size: 14px;
+        padding: 12px 15px;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+
+    /* Intro Content Adjustments */
+    .intro-content {
+        flex-direction: column;
+        text-align: center;
+        padding-left: 15px; /* Add left padding for intro content */
+        padding-right: 15px; /* Optional: Keep symmetrical padding */
+    }
+
+    .intro-image {
+        margin: 0 0 20px 0;
+    }
+
+    .intro-text {
+        border-left: none;
+        border-top: 5px solid var(--accent-color);
+        padding-left: 15px; /* Add left padding to text */
+        padding-right: 15px; /* Optional: Keep symmetrical padding */
+    }
+}
